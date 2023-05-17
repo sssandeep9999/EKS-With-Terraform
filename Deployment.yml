@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myjavaapp-deploy
+  labels:
+    app: myjavaapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myjavaapp
+      version: 1.1.1
+  template:
+    metadata:
+      labels:
+        app: myjavaapp
+        version: 1.1.1
+    spec:
+       containers:
+       - name: myjavaapp-container
+         image: satyasandeep901/medilabproject:1
+         ports:
+          - containerPort: 8080
