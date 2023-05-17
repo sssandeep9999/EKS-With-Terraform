@@ -1,4 +1,6 @@
 # EKS-Cluster-Setup-Using-Terraform
+
+**Steps to setup Eks client**
 step1:-
 launch Ec2 instanc(Eks client) to control the eks master.
 Now perform all the below given steps on Newly launched Ec2(Eks client machine) 
@@ -10,8 +12,7 @@ step2:- install aws cli
 
 # aws --version --> To check aws cli version
 
-step3:- install eksctl
--------
+**step3:- install eksctl**
 
 # curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp  (Download and extract the latest release of eks file)
 
@@ -28,9 +29,17 @@ note:-
 -----
 This command is used to download kubectl file we can get this link from kubernetes official webite and also we can select particular available version.
 
-$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl 
 $ kubectl version --client
 
+# git clone https://github.com/sssandeep9999/EKS-With-Terraform.git
+	
+NOW EXECUTE OUR TERRAFORM CODE USING COMMANDS
+# terraform init --> To download required dependencies
+# terraform plan --> To perform a dryrun
+# terraform apply --> To Execute the code ans create infrastructure
+# terraform desroy --> To destroy the infrastructure
+	
 $ aws eks list-clusters
 o/p:-
 {
@@ -53,3 +62,12 @@ o/p:-
 -----
 NAME                                        STATUS   ROLES    AGE   VERSION
 ip-10-0-1-242.ap-south-1.compute.internal   Ready    <none>   5m    v1.26.2-eks-a59e1f0
+
+****Now we can perform kubernetes tasks in eks cluster****
+
+# kubectl create -f <give your yaml file> --> To create deployment or service in eks cluster
+# kubectl get deploy
+# kubectl get svc
+# kubecl get pods
+# kubectl delete deploy/<deployment name>
+# kubectl delete svc/<svc name>	
